@@ -1,12 +1,51 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 // import pizzaNapolitana from "../assets/img/pizza-napolitana.jpg";
 // import pizzaEspañola from "../assets/img/pizza-española.jpg";
 // import pizzaPepperoni from "../assets/img/pizza-pepperoni.jpg";
 import Header from "../components/Header";
 import CardPizza from "./CardPizza";
-import pizzas from "../pizzas.js";
+// import pizzas from "../pizzas.js";
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/pizzas");
+        if (!response.ok) throw new Error("Error al cargar las pizzas");
+        const data = await response.json();
+        setPizzas(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPizzas();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" role="status" />
+        <p>Cargando pizzas...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container className="mt-4">
+        <Alert variant="danger">Error: {error}</Alert>
+      </Container>
+    );
+  }
+
   return (
     <>
     {/* Banner */}
@@ -39,12 +78,12 @@ const Home = () => {
         <h2 className="fw-bold">¡Pizzería Mamma Mía! 🍕</h2>
         <p className="lead">Donde cada rebanada cuenta una historia.</p>
       </div>
-      </div>
+    </div>
 
-      {/* Header actual */}
-      <Header />
+    {/* Header*/}
+    <Header />
 
-{/* HITO 2 */}
+    {/* HITO 2 */}
       {/* Lista de pizzas */}
       {/* <Container fluid className="my-4 px-5">
         <Row className="g-4 justify-content-center">
@@ -75,8 +114,8 @@ const Home = () => {
         </Row>
       </Container> */}
 
-      {/* HITO 3 LISTA DE PIZZAS  */}
-      <Container className="mt-5">
+    {/* HITO 3 LISTA DE PIZZAS  */}
+      {/* <Container className="mt-5">
         <Row className="g-5">
           {pizzas.map((pizza) => (
             <Col key={pizza.id} sm={12} md={6} lg={4} className="mb-4">
@@ -91,6 +130,18 @@ const Home = () => {
             </Col>
           ))}
         </Row>
+      </Container> */}
+      
+      {/* HITO 4 */}
+      <Container className="mt-5">
+      <h1 className="text-center mb-4">🍕 Nuestras Pizzas 🍕</h1>
+      <Row xs={1} md={2} lg={3} className="g-4">
+        {pizzas.map(pizza => (
+          <Col key={pizza.id}>
+            <CardPizza pizza={pizza} />
+          </Col>
+        ))}
+      </Row>
       </Container>
     </>
   )
