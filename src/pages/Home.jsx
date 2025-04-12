@@ -4,7 +4,7 @@ import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 // import pizzaEspañola from "../assets/img/pizza-española.jpg";
 // import pizzaPepperoni from "../assets/img/pizza-pepperoni.jpg";
 import Header from "../components/Header";
-import CardPizza from "./CardPizza";
+import CardPizza from "../components/CardPizza";
 // import pizzas from "../pizzas.js";
 
 const Home = () => {
@@ -54,7 +54,7 @@ const Home = () => {
         backgroundImage: 'url(/img/Header.jpg)',
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "300px",
+        height: "400px",
         position: "relative",
         color: "white",
         }}
@@ -133,8 +133,8 @@ const Home = () => {
       </Container> */}
       
       {/* HITO 4 */}
-      <Container className="mt-5">
-      <h1 className="text-center mb-4">🍕 Nuestras Pizzas 🍕</h1>
+      <Container className="mt-2 mb-5">
+      <h2 className="text-center mb-4">🍕 Nuestras Pizzas 🍕</h2>
       <Row xs={1} md={2} lg={3} className="g-4">
         {pizzas.map(pizza => (
           <Col key={pizza.id}>
