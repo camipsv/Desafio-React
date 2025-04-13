@@ -67,27 +67,60 @@
 
 
 // HITO 4
-import { Card, Button } from "react-bootstrap";
+// import { Card, Button } from "react-bootstrap";
 
-const CardPizza = ({ pizza }) => {
+// const CardPizza = ({ pizza }) => {
+//   return (
+//     <Card className="h-100">
+//     <Card.Img variant="top" src={(pizza.img)} />
+//     <Card.Body>
+//       <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
+//       <Card.Text>{pizza.desc}</Card.Text>
+//       <ul className="text-capitalize">
+//         {pizza.ingredients.map((ing, i) => (
+//           <li key={i}>{ing}</li>
+//         ))}
+//       </ul>
+//     </Card.Body>
+//       <Card.Footer className="d-flex justify-content-between align-items-center">
+//         <strong>${pizza.price}</strong>
+//         <Button variant="success" size="sm">Agregar 🛒</Button>
+//       </Card.Footer>
+//     </Card>
+//   );
+// }
+// export default CardPizza;
+
+
+// HITO 6
+import { Card, Button, ListGroup } from "react-bootstrap"
+import { useCart } from "../context/CartContext" 
+export default function CardPizza({ pizza }) {
+  const { addToCart } = useCart();
+
   return (
-    <Card className="h-100">
-    <Card.Img variant="top" src={(pizza.img)} />
-    <Card.Body>
-      <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
-      <Card.Text>{pizza.desc}</Card.Text>
-      <ul className="text-capitalize">
-        {pizza.ingredients.map((ing, i) => (
-          <li key={i}>{ing}</li>
-        ))}
-      </ul>
-    </Card.Body>
-      <Card.Footer className="d-flex justify-content-between align-items-center">
-        <strong>${pizza.price}</strong>
-        <Button variant="success" size="sm">Agregar 🛒</Button>
-      </Card.Footer>
+    <Card className="cardcolor shadow h-100 d-flex flex-column card-hover">
+      <Card.Img
+        variant="top"
+        src={pizza.img}
+        alt={pizza.name}
+      />
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
+        <Card.Text>{pizza.desc}</Card.Text>
+        <h6>Ingredientes:</h6>
+        <ListGroup className="text-capitalize" variant="flush">
+          {pizza.ingredients.map((ing, i) => (
+            <ListGroup.Item key={i} className="custom-line bg-color">• {ing}</ListGroup.Item>
+          ))}
+        </ListGroup>
+        <div className="d-flex justify-content-between align-items-center mt-auto pt-3">
+          <strong className="ms-5 fs-5">Valor: ${pizza.price}</strong>
+          <Button className="btn-hover me-5" variant="success" onClick={() => addToCart(pizza)}>
+            Añadir 🛒
+          </Button>
+        </div>
+      </Card.Body>
     </Card>
-  );
+  )
 }
-export default CardPizza;
-

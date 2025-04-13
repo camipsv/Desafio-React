@@ -75,8 +75,8 @@ const Home = () => {
           padding: "0 1rem",
         }}
       >
-        <h2 className="fw-bold">¡Pizzería Mamma Mía! 🍕</h2>
-        <p className="lead">Donde cada rebanada cuenta una historia.</p>
+        <h2 className="h2-custom fw-bold fs-1">¡Pizzería Mamma Mía! 🍕</h2>
+        <p className="p-custom lead fs-4">Donde cada rebanada cuenta una historia.</p>
       </div>
     </div>
 
@@ -134,7 +134,7 @@ const Home = () => {
       
       {/* HITO 4 */}
       <Container className="mt-2 mb-5">
-      <h2 className="text-center mb-4">🍕 Nuestras Pizzas 🍕</h2>
+      <h2 className="text-center mb-4">Nuestras Pizzas</h2>
       <Row xs={1} md={2} lg={3} className="g-4">
         {pizzas.map(pizza => (
           <Col key={pizza.id}>

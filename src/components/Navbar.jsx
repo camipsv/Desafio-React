@@ -25,11 +25,41 @@
 
 // export default Navbar;
 
-// HITO 5
+// // HITO 5
+// import { Link } from "react-router-dom"
+// import { Navbar, Nav, Container, Button } from "react-bootstrap"
+
+// export default function MyNavbar() {
+//   return (
+//     <Navbar bg="dark" variant="dark" expand="lg">
+//       <Container>
+//         <Navbar.Brand as={Link} to="/">Pizzería Mamma Mía 🍕</Navbar.Brand>
+//         <Navbar.Toggle />
+//         <Navbar.Collapse>
+//           <Nav className="me-auto">
+//             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+//             <Nav.Link as={Link} to="/register">Registro</Nav.Link>
+//             <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
+//             <Nav.Link as={Link} to="/profile">Perfil</Nav.Link>
+//           </Nav>
+//           <Button as={Link} to="/cart" variant="success">
+//             🛒 Total: $0
+//           </Button>
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar>
+//   )
+// }
+
+
+// HITO 6
 import { Link } from "react-router-dom"
 import { Navbar, Nav, Container, Button } from "react-bootstrap"
+import { useCart } from "../context/CartContext"
 
 export default function MyNavbar() {
+  const { total } = useCart();
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -43,7 +73,7 @@ export default function MyNavbar() {
             <Nav.Link as={Link} to="/profile">Perfil</Nav.Link>
           </Nav>
           <Button as={Link} to="/cart" variant="success">
-            🛒 Total: $0
+            🛒 Total: ${total.toFixed(0)} 
           </Button>
         </Navbar.Collapse>
       </Container>

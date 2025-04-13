@@ -1,0 +1,45 @@
+body{
+ background-color: #f6f5ef;
+}
+
+.cardcolor {
+ background-color: #ebeadc;
+ border-radius: 0.5rem;
+ box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-success {
+ background-color: #a3a166;
+ border-color: #a3a166;
+}
+
+.btn-success:hover {
+ background-color: #8e8d54;
+ border-color: #8e8d54;
+}
+
+.btn-hover {
+ transition: transform 0.2s ease;
+ cursor: pointer;
+}
+
+.btn-hover:hover {
+ transform: scale(1.1);
+}
+
+.bg-color{
+ background-color: #ebeadc;
+}
+
+.custom-line {
+ border-bottom: 1px solid #8e8d54;
+}
+
+h1,h2{
+ color:#887b57;
+}
+
+.h2-custom, .p-custom {
+ color:#f6f5ef;
+}
