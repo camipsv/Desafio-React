@@ -93,8 +93,44 @@
 
 
 // HITO 6
+// import { Card, Button, ListGroup } from "react-bootstrap"
+// import { useCart } from "../context/CartContext" 
+// export default function CardPizza({ pizza }) {
+//   const { addToCart } = useCart();
+
+//   return (
+//     <Card className="cardcolor shadow h-100 d-flex flex-column card-hover">
+//       <Card.Img
+//         variant="top"
+//         src={pizza.img}
+//         alt={pizza.name}
+//       />
+//       <Card.Body className="d-flex flex-column">
+//         <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
+//         <Card.Text>{pizza.desc}</Card.Text>
+//         <h6>Ingredientes:</h6>
+//         <ListGroup className="text-capitalize" variant="flush">
+//           {pizza.ingredients.map((ing, i) => (
+//             <ListGroup.Item key={i} className="custom-line bg-color">• {ing}</ListGroup.Item>
+//           ))}
+//         </ListGroup>
+//         <div className="d-flex justify-content-between align-items-center mt-auto pt-3">
+//           <strong className="ms-5 fs-5">Valor: ${pizza.price}</strong>
+//           <Button className="btn-hover me-5" variant="success" onClick={() => addToCart(pizza)}>
+//             Añadir 🛒
+//           </Button>
+//         </div>
+//       </Card.Body>
+//     </Card>
+//   )
+// }
+
+
+// HITO 7
 import { Card, Button, ListGroup } from "react-bootstrap"
 import { useCart } from "../context/CartContext" 
+import { Link } from "react-router-dom";
+
 export default function CardPizza({ pizza }) {
   const { addToCart } = useCart();
 
@@ -114,11 +150,16 @@ export default function CardPizza({ pizza }) {
             <ListGroup.Item key={i} className="custom-line bg-color">• {ing}</ListGroup.Item>
           ))}
         </ListGroup>
-        <div className="d-flex justify-content-between align-items-center mt-auto pt-3">
-          <strong className="ms-5 fs-5">Valor: ${pizza.price}</strong>
-          <Button className="btn-hover me-5" variant="success" onClick={() => addToCart(pizza)}>
-            Añadir 🛒
-          </Button>
+        <div className="d-flex flex-column align-items-center mt-auto pt-3 gap-2">
+          <strong className="fs-5">Valor: ${pizza.price}</strong>
+          <div className="d-flex gap-2">
+            <Button variant="success" onClick={() => addToCart(pizza)}>
+              Añadir 🛒
+            </Button>
+            <Link to={`/pizza/${pizza.id}`}>
+            <Button variant="primary">Ver más</Button>
+            </Link>
+          </div>
         </div>
       </Card.Body>
     </Card>
