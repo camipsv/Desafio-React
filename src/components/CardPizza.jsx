@@ -126,7 +126,7 @@
 // }
 
 
-// HITO 7
+// HITO 7 - 8
 import { Card, Button, ListGroup } from "react-bootstrap"
 import { useCart } from "../context/CartContext" 
 import { Link } from "react-router-dom";
@@ -143,7 +143,7 @@ export default function CardPizza({ pizza }) {
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
-        <Card.Text>{pizza.desc}</Card.Text>
+        {/* <Card.Text>{pizza.desc}</Card.Text> */}
         <h6>Ingredientes:</h6>
         <ListGroup className="text-capitalize" variant="flush">
           {pizza.ingredients.map((ing, i) => (
@@ -157,7 +157,7 @@ export default function CardPizza({ pizza }) {
               Añadir 🛒
             </Button>
             <Link to={`/pizza/${pizza.id}`}>
-            <Button variant="primary">Ver más</Button>
+            <Button className="more">Ver más </Button>
             </Link>
           </div>
         </div>

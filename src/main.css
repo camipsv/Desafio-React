@@ -43,3 +43,13 @@ h1,h2{
 .h2-custom, .p-custom {
  color:#f6f5ef;
 }
+
+.more {
+ background-color: #a56929;
+ border-color: #a56929
+}
+
+.more:hover {
+ background-color: #c88538;
+ border-color: #c88538
+}

@@ -82,12 +82,75 @@
 // }
 
 
-// HITO 7
-import { Link } from "react-router-dom";
+// // HITO 7
+// import { Link } from "react-router-dom";
+// import { Navbar, Nav, Container, Button } from "react-bootstrap";
+// import { useCart } from "../context/CartContext";
+// import { useUser } from "../context/UserContext";
+// import { NavLink } from "react-router-dom";
+
+// export default function MyNavbar() {
+//   const { total } = useCart();
+//   const { token, logout } = useUser();
+
+//   return (
+//     <Navbar bg="dark" variant="dark" expand="lg">
+//       <Container>
+//         <Navbar.Brand as={Link} to="/">Pizzería Mamma Mía 🍕</Navbar.Brand>
+//         <Navbar.Toggle />
+//         <Navbar.Collapse>
+//         <Nav className="me-auto">
+//   <NavLink 
+//     to="/" 
+//     className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+//   >
+//     Inicio
+//   </NavLink>
+
+//   {token ? (
+//     <>
+//       <NavLink 
+//         to="/profile" 
+//         className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+//       >
+//         Perfil
+//       </NavLink>
+//       <Button variant="outline-danger" onClick={logout}>Cerrar sesión</Button>
+//     </>
+//   ) : (
+//     <>
+//       <NavLink 
+//         to="/login" 
+//         className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+//       >
+//         Iniciar sesión
+//       </NavLink>
+//       <NavLink 
+//         to="/register" 
+//         className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+//       >
+//         Registro
+//       </NavLink>
+//     </>
+//   )}
+// </Nav>
+
+//           <Button as={Link} to="/cart" variant="success">
+//             🛒 Total: ${total.toFixed(0)} 
+//           </Button>
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar>
+//   );
+// }
+
+
+
+// HITO 8
+import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
-import { NavLink } from "react-router-dom";
 
 export default function MyNavbar() {
   const { total } = useCart();
@@ -97,46 +160,52 @@ export default function MyNavbar() {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">Pizzería Mamma Mía 🍕</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-        <Nav className="me-auto">
-  <NavLink 
-    to="/" 
-    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-  >
-    Inicio
-  </NavLink>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            >
+              Inicio
+            </NavLink>
 
-  {token ? (
-    <>
-      <NavLink 
-        to="/profile" 
-        className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-      >
-        Perfil
-      </NavLink>
-      <Button variant="outline-danger" onClick={logout}>Cerrar sesión</Button>
-    </>
-  ) : (
-    <>
-      <NavLink 
-        to="/login" 
-        className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-      >
-        Iniciar sesión
-      </NavLink>
-      <NavLink 
-        to="/register" 
-        className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-      >
-        Registro
-      </NavLink>
-    </>
-  )}
-</Nav>
+            {token ? (
+              <>
+                <NavLink 
+                  to="/profile" 
+                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                >
+                  Perfil
+                </NavLink>
+                <Button 
+                  variant="outline-danger" 
+                  onClick={logout} 
+                  className="ms-2"
+                >
+                  Cerrar sesión
+                </Button>
+              </>
+            ) : (
+              <>
+                <NavLink 
+                  to="/login" 
+                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                >
+                  Iniciar sesión
+                </NavLink>
+                <NavLink 
+                  to="/register" 
+                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                >
+                  Registro
+                </NavLink>
+              </>
+            )}
+          </Nav>
 
           <Button as={Link} to="/cart" variant="success">
-            🛒 Total: ${total.toFixed(0)} 
+            🛒 Total: ${total.toFixed(0)}
           </Button>
         </Navbar.Collapse>
       </Container>

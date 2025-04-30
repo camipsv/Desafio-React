@@ -26,7 +26,7 @@
 
 
 
-// HITO 5-7
+// HITO 5-8
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home"
 import Register from "./pages/Register"
@@ -36,6 +36,7 @@ import Pizza from "./pages/Pizza"
 import Profile from "./pages/Profile"
 import NotFound from "./pages/NotFound"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useUser } from "./context/UserContext";
 
@@ -62,6 +63,7 @@ function App() {
         />
         <Route path="*" element={<NotFound />} />
     </Routes>
+    <Footer />
     </>
     );
 }

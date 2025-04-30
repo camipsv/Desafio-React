@@ -102,17 +102,15 @@ const Pizza = () => {
               <Card.Text>
                 <strong>Descripción: </strong>{pizza.desc}
               </Card.Text>
-              <Card.Text>
-                <strong>Ingredientes: </strong>
-                <ul className="text-capitalize">
-                  {pizza.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-              </Card.Text>
+              <strong>Ingredientes: </strong>
+              <ul className="text-capitalize">
+                {pizza.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
             </Card.Body>
             <Card.Footer className="text-center">
-            <Button variant="success" onClick={() => addToCart(pizza)}>Agregar al Carrito 🛒</Button>
+              <Button variant="success" onClick={() => addToCart(pizza)}>Agregar al Carrito 🛒</Button>
             </Card.Footer>
           </Card>
         </div>
@@ -122,3 +120,4 @@ const Pizza = () => {
 };
 
 export default Pizza;
+
